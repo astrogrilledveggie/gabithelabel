@@ -1,0 +1,62 @@
+<%- include('../partials/head') %>
+
+<script src="../../static/addtocart.js" async></script>
+
+    <div class="d-flex mt-5 mb-5">
+
+            <div class="p-2 flex-shrink-1">
+                <img class="img-fluid product-image" src="<%= product.image2 %>">
+            </div>
+
+            <div class="p-2 card text-center">
+                <h5 class="card-title product-title">
+                    <%= product.name %>
+                </h5>
+                <p class="card-text product-price">
+                    $<%= product.price %>
+                </p>
+                
+                <div class="btn-group">
+                    <% if (user) { %>
+                
+                        <a href="/home" class="btn btn-dark me-1">Return home</a>
+                        <form method="POST" action="/cart">
+                            <button class="btn btn-dark ms-1 addtocart-button" id="addToCart" type="submit">Add to cart</button>
+                        </form>
+                
+                        <% } else { %>                
+                            
+                            <a href="/home" class="btn btn-dark me-1">Return home</a>
+                            <form method="POST" action="/cart">
+                                <button class="btn btn-dark ms-1 addtocart-button" id="addToCart" type="submit">Add to cart</button>
+                            </form>
+                
+                            <% } %>
+                </div>
+            </div>
+
+            <div class="p-2 w-50 flex-shrink-0 ms-5 me-2" id="cartNav">
+                <section class="container content-section">
+                    <h2>Your Cart</h2>
+
+                    <div class="cart-row d-flex">
+                        <span class="p-2 cart-item cart-header cart-column">ITEM</span>
+                        <span class="p-2 cart-price cart-header cart-column">PRICE</span>
+                        <span class="p-2 cart-quantity cart-header cart-column">QUANTITY</span>
+                    </div>
+
+                    <div class="cart-items">
+                    </div>
+
+                    <div class="cart-total">
+                        <strong class="cart-total-title">Total</strong>
+                        <span class="cart-total-price">$0</span>
+                    </div>
+
+                    <button class="btn btn-sm btn-secondary mt-3 btn-buyNow" type="button">Buy now</button>
+                </section>
+            </div>
+
+    </div>
+
+    <%- include('../partials/foot') %>

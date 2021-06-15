@@ -1,0 +1,68 @@
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-family: Futura;
+  font-size: 70px;
+  margin-bottom: 50px;
+}
+
+h2 {
+  font-family: Futura;
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+
+.navbar {
+  background-color: #ebdbdb;
+  font-family: Futura;
+}
+
+.dropdown-menu {
+  background-color: lightgrey;
+}
+
+footer {
+  background-color: whitesmoke;
+  font-size: small;
+  color: gray;
+}
+
+footer h2 {
+  font-family: Futura;
+  font-size: large;
+  color: black;
+}
+
+.list-group-item {
+  border: none;
+  background-color: transparent;
+}
+
+.carousel-inner {
+  height: 700px;
+}
+
+.carousel-item {
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  border: none;
+  font-family: Futura;
+}
+
+.card-title {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.card-text {
+  font-size: x-large;
+}
+
+#cartNav {
+  border-left: 1px solid gray;
+  font-family: Futura;
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet">
+    
+    <title>
+        Gabi The Label
+    </title>
+
+    <meta name="description"
+        content="Gabi The Label is an independent, contemporary fashion brand launched in 2018. We curate modern, minimal pieces with a romantic flair. We love to keep things simple and beautiful. Join us on our aesthetic journey at @gabi.label.">
+    <link rel="canonical" href="https://gabi-label.com/">
+    <link rel="shortcut icon"
+        href="//cdn.shopify.com/s/files/1/0009/8746/3737/files/Final_Logo_black_8de6d174-45a7-44ed-978a-c839730b9b43_32x32.png"
+        type="image/png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gabi The Label">
+    <meta property="og:description"
+        content="Gabi The Label is an independent, contemporary fashion brand launched in 2018. We curate modern, minimal pieces with a romantic flair. We love to keep things simple and beautiful. Join us on our aesthetic journey at @gabi.label.">
+    <meta property="og:url" content="https://gabi-label.com/">
+    <meta property="og:site_name" content="Gabi The Label">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+
+            <div id="nav-left">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">HOME</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            SHOP
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/products">BACK IN STOCK</a></li>
+                            <li><a class="dropdown-item" href="/products">NEW</a></li>
+                            <li><a class="dropdown-item" href="/products">EARRINGS</a></li>
+                            <li><a class="dropdown-item" href="/products">NECKLACE</a></li>
+                            <li><a class="dropdown-item" href="/products">CLOTHING</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            INFO
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">SHIPPING</a></li>
+                            <li><a class="dropdown-item" href="#">PRODUCT CARE</a></li>
+                            <li><a class="dropdown-item" href="#">CONTACT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            </div>
+
+            <div id="nav-center">
+                <a href="#" class="Header__LogoLink">
+                    <img class="Header__LogoImage Header__LogoImage--primary"
+                            src="//cdn.shopify.com/s/files/1/0009/8746/3737/files/Final_Logo_black_8de6d174-45a7-44ed-978a-c839730b9b43_50x.png?v=1574092835"
+                            srcset="//cdn.shopify.com/s/files/1/0009/8746/3737/files/Final_Logo_black_8de6d174-45a7-44ed-978a-c839730b9b43_50x.png?v=1574092835 1x, //cdn.shopify.com/s/files/1/0009/8746/3737/files/Final_Logo_black_8de6d174-45a7-44ed-978a-c839730b9b43_50x@2x.png?v=1574092835 2x"
+                            width="50" alt="Gabi The Label">
+                </a>
+            </div>
+
+            <div id="nav-right">
+                <ul class="d-flex navbar-nav">
+                    <% if (user) { %>
+                        <li class="nav-item"><a class="nav-link" href="/search">SEARCH</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/users/account">ACCOUNT</a></li>
+                        <li class="nav-item">
+                            <form method="post" action="/users/logout">
+                                <button type="submit" class="btn nav-link">LOGOUT</button>
+                            </form>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/cart">CART</a></li>
+                        <% } else { %>
+                            <li class="nav-item"><a class="nav-link" href="/search">SEARCH</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/users/register">REGISTER</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/users/login">LOGIN</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/cart">CART</a></li>
+                            <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>

@@ -1,0 +1,29 @@
+<%- include('../partials/head') %>
+
+    <div class="container mt-5 mb-5" id="cartPage">
+        <section class="container content-section">
+            <h1>Your Cart</h1>
+    
+            <div class="cart-row d-flex">
+                <span class="p-2 cart-item cart-header cart-column">ITEM</span>
+                <span class="p-2 cart-price cart-header cart-column">PRICE</span>
+                <span class="p-2 cart-quantity cart-header cart-column">QUANTITY</span>
+            </div>
+    
+            <div class="cart-items d-flex">
+            </div>
+    
+            <div class="cart-total mt-5 mb-3">
+                <strong class="cart-total-title">Total</strong>
+                <span class="cart-total-price">$0</span>
+            </div>
+    
+            <button class="btn btn-sm btn-secondary mt-3 btn-buyNow" type="button">Buy now</button>
+
+            <form method="POST" action="/cart?_method=PATCH">
+                <button class="btn btn-sm btn-dark addtocart-button" type="submit">Update cart</button>
+            </form>
+        </section>
+    </div>
+
+<%- include('../partials/foot') %>
