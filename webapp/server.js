@@ -22,7 +22,7 @@ const productController = require('./controllers/products_controller')
 const cartController = require('./controllers/cart_controller')
 
 const app = express();
-const port = 7000;
+const port = process.env.PORT || 7000; // tenary operator
 const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`
 
 mongoose.set('useFindAndModify', false)
