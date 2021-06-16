@@ -1,29 +1,85 @@
 <%- include('../partials/head') %>
 
-    <div class="container mt-5 mb-5" id="cartPage">
-        <section class="container content-section">
-            <h1>Your Cart</h1>
-    
-            <div class="cart-row d-flex">
-                <span class="p-2 cart-item cart-header cart-column">ITEM</span>
-                <span class="p-2 cart-price cart-header cart-column">PRICE</span>
-                <span class="p-2 cart-quantity cart-header cart-column">QUANTITY</span>
-            </div>
-    
-            <div class="cart-items d-flex">
-            </div>
-    
-            <div class="cart-total mt-5 mb-3">
-                <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">$0</span>
-            </div>
-    
-            <button class="btn btn-sm btn-secondary mt-3 btn-buyNow" type="button">Buy now</button>
+<script src="../../static/cartAdmin.js" async></script>
 
+    <div class="container mt-5 mb-5" id="cartPage">
+        
+            <h1>Your Cart</h1>
             <form method="POST" action="/cart?_method=PATCH">
-                <button class="btn btn-sm btn-dark addtocart-button" type="submit">Update cart</button>
+                <table class="table table-sm table-responsive table-borderless">
+        
+                    <thead class="cart-row">
+                        <tr class="table-active d-flex">
+                            <th class="cart-item col-6" scope="col">Item</th>
+                            <th class="cart-price col-1" scope="col">Price</th>
+                            <th class="cart-quantity col-2" scope="col">Quantity</th>
+                        </tr>
+                    </thead>
+        
+                    <tbody>
+        
+                        <tr scope="row">
+                            <td colspan="3">
+                                <table class="cart-items table table-sm table-responsive table-hover table-borderless">
+                                    <% if (cart) { %>
+                                    <% for (let i = 0; i < cart.product.length; i++) { %>
+                                        <tr class="d-flex cart-row">
+                                            <td class="cart-item col-6">
+                                                <img class="cart-item-image" src="<%= cart.product[i].image %>" width="50" height="50">
+                                                <input type="hidden" class="form-control" id="image" name="image<%= i %>" value="<%= cart.product[i].image %>">
+                                            
+                                                <p class="cart-item-name"><%= cart.product[i].name %></p>
+                                                <input type="hidden" class="form-control" id="name" name="name<%= i %>" value="<%= cart.product[i].name %>">
+                                            </td>
+                                            <td class="cart-price col-1 align-middle">
+                                                $<%= cart.product[i].price %>
+                                                <input type="hidden" class="form-control cart-price-input" id="price" name="price<%= i %>" value="<%= cart.product[i].price %>">
+                                            </td>
+                                            <td class="cart-quantity input-group">
+                                                <input class="cart-quantity-input" type="number" id="quantity" name="quantity<%= i %>" value="<%= cart.product[i].quantity %>" style="width: 50px;">
+                                                <button class="btn btn-sm btn-secondary ms-1 remove" type="button">Remove</button>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                    <% } else { %>
+                                        <tr>
+                                            <td>Your cart is empty.</td>
+                                        </tr>
+                                    <% } %>
+                                </table>
+                            </td>
+                        </tr>
+        
+                        <tr class="cart-total table-danger d-flex" scope="row">
+                            <td class="cart-total-name col-1"><b>Total</b></td>
+                            <td class="cart-total-price col-1"><b>$0</b></td>
+                        </tr>
+        
+                        <tr>
+                            <td colspan="3">
+                                <div class="btn-toolbar" role="toolbar">
+                                    <div class="btn-group mt-5 mr-2" role="group">
+                                        <button class="btn btn-sm btn-danger btn-buyNow" type="button">Buy now</button>
+                                    </div>
+
+                                    <div class="btn-group mt-5 mr-2" role="group">
+                                        <button class="btn btn-sm ms-1 btn-secondary" id="updateCart" type="submit">Update cart</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+        
+                    </tbody>
+        
+                </table>
             </form>
-        </section>
+
+        <div class="btn-group" role="group">
+            <form method="post" action="/cart?_method=DELETE">
+                <button class="btn btn-sm ms-1 btn-dark" id="deleteCart" type="submit">Empty cart</button>
+            </form>
+        </div>
+
     </div>
 
 <%- include('../partials/foot') %>

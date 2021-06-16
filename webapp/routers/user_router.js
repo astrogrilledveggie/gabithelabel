@@ -15,6 +15,7 @@ router.get('/login', guestOnlyMiddleware, userController.loginForm)
 router.post('/login', guestOnlyMiddleware, userController.loginUser)
 
 router.get('/account', authenticatedOnlyMiddleware, userController.account)
+router.patch('/account', authenticatedOnlyMiddleware, userController.updateAccount)
 
 router.post('/logout', authenticatedOnlyMiddleware, userController.logout)
 

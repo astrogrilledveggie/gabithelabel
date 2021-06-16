@@ -1,11 +1,11 @@
 if (document.readyState == 'loading') {
-    document.addEventListener('DOMContentLoaded', ready)
+    document.addEventListener('DOMContentLoaded', addToCartMaster)
 } else {
-    ready()
+    addToCartMaster()
     console.log('Ready to feel the Force')
 }
 
-function ready() {
+function addToCartMaster() {
     let removeCartItemButtons = document.getElementsByClassName('btn-danger')
     for (let i = 0; i < removeCartItemButtons.length; i++) {
         let button = removeCartItemButtons[i]
@@ -21,7 +21,7 @@ function ready() {
     let addToCartButtons = document.getElementsByClassName('addtocart-button')
     for (let i = 0; i < addToCartButtons.length; i++) {
         let button = addToCartButtons[i]
-        button.addEventListener('submit', addToCartClicked)
+        button.addEventListener('click', addToCartClicked)
     }
 
     document.getElementsByClassName('btn-buyNow')[0].addEventListener('click', purchaseClicked)
@@ -49,34 +49,40 @@ function quantityChanged(event) {
 function addToCartClicked(event) {
     let button = event.target
     let shopItem = button.parentElement.parentElement.parentElement
-    let title = shopItem.getElementsByClassName('product-title')[0].innerText
-    let price = shopItem.getElementsByClassName('product-price')[0].innerText
-    let imageSrc = shopItem.getElementsByClassName('product-image')[0].src
-    addItemToCart(title, price, imageSrc)
+    let name = shopItem.getElementsByClassName('product-name')[0].innerText
+    let price = shopItem.getElementsByClassName('product-price')[0].innerText.slice(1)
+    let image = shopItem.getElementsByClassName('product-image')[0].src
+    addItemToCart(name, price, image)
     updateCartTotal()
 }
 
-function addItemToCart(title, price, imageSrc) {
-    let cartRow = document.createElement('div')
-    cartRow.classList.add('cart-row')
+function addItemToCart(name, price, image) {
+    let cartRow = document.createElement('tr')
+    cartRow.classList.add('cart-row', 'd-flex', 'p-2')
     let cartItems = document.getElementsByClassName('cart-items')[0]
-    let cartItemNames = cartItems.getElementsByClassName('cart-item-title')
+    let cartItemNames = cartItems.getElementsByClassName('cart-item-name')
     for (let i = 0; i < cartItemNames.length; i++) {
-        if (cartItemNames[i].innerText == title) {
-            alert('This item is already added to the cart')
+        if (cartItemNames[i].innerText == name) {
+            alert('You have already added this product to your cart')
             return
         }
     }
     let cartRowContents = `
-        <div class="cart-item cart-column">
-            <img class="cart-item-image" src="${imageSrc}" width="70" height="70">
-            <span class="cart-item-title">${title}</span>
-        </div>
-        <span class="cart-price cart-column">${price}</span>
-        <div class="cart-quantity cart-column">
-            <input class="cart-quantity-input" type="number" value="1">
-            <button class="btn btn-danger btn-sm" type="button">REMOVE</button>
-        </div>`
+        <td class="cart-item col-5">
+            <img class="cart-item-image" src="${image}" width="50" height="50">
+            <input type="hidden" class="form-control" id="image" name="image" value="${image}">
+
+            <p class="cart-item-name">${name}</p>
+            <input type="hidden" class="form-control" id="name" name="name" value="${name}">
+        </td>
+        <td class="cart-price col-2">
+            $${price}
+            <input type="hidden" class="form-control" id="price" name="price" value="${price}">
+        </td>
+        <td class="cart-quantity input-group input-group-sm col-3">
+            <input class="cart-quantity-input input-sm border-bottom border-secondary" type="number" id="quantity" name="quantity" value="1" style="width: 50px; height: 35px;">
+            <button class="btn btn-danger ms-1 border-bottom border-danger" style="height: 35px;" type="button">Remove</button>
+        </td>`
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
     cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)

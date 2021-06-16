@@ -122,8 +122,40 @@ module.exports = {
         res.redirect('/users/account')
     },
 
-    account: (req, res) => {
-        res.render('users/account')
+    account: async (req, res) => {
+        const infoMsgArr = await req.consumeFlash('info')
+
+        userModel.findOne({ _id : req.session.user._id })
+            .then(user => {
+                res.render('users/account', { 
+                    user: user,
+                    infoMsgArr: infoMsgArr,
+                })
+            })
+    },
+
+    updateAccount: (req, res) => {
+        const timestampNow = moment().utc()
+
+        userModel.updateOne(
+            { _id : req.session.user._id },
+            {
+                $set: {
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    email: req.body.email,
+                    updated_at: timestampNow
+                }
+            }
+        )
+            .then(async function (response) {
+                await req.flash('info', 'Your account information has been updated!')
+                res.redirect('/users/account')
+            })
+            .catch(err => {
+                console.log(err)
+                return
+            })
     },
 
     logout: (req, res) => {
@@ -132,13 +164,3 @@ module.exports = {
     }
 
 }
-
-// addresses: {
-//     addr_line_1: req.body.addr_line_1,
-//     addr_line_2: req.body.addr_line_2,
-//     unit: req.body.unit,
-//     postal: req.body.postal,
-//     city: req.body.city,
-//     state: req.body.state,
-//     country: req.body.country
-// },

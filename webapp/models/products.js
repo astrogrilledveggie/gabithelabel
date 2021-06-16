@@ -8,6 +8,7 @@ const productSchema = new mongoose.Schema({
     collectionName: { type: String },
     productType: { type: String },
     gabiStudio: { type: Boolean },
+    description: { type: String },
     slug: { type: String, required: true, unique: true }
 })
 

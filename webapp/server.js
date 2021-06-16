@@ -78,9 +78,22 @@ app.get('/search', (req, res) => {
   res.render('pages/search')
 })
 
+app.get('/shipping', (req, res) => {
+  res.render('pages/shipping')
+})
+
+app.get('/care', (req, res) => {
+  res.render('pages/care')
+})
+
+app.get('/contact', (req, res) => {
+  res.render('pages/contact')
+})
+
 app.get('/cart', authenticatedOnlyMiddleware, cartController.index)
-app.post('/cart', authenticatedOnlyMiddleware, cartController.addToCart)
-app.patch('/cart', authenticatedOnlyMiddleware, cartController.update)
+app.post('/cart', authenticatedOnlyMiddleware, cartController.confirmCart)
+app.patch('/cart', authenticatedOnlyMiddleware, cartController.updateCart)
+app.delete('/cart', authenticatedOnlyMiddleware, cartController.deleteCart)
 
 app.use('/products', productRouter)
 app.use('/users', userRouter)
