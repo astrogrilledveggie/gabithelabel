@@ -1,3 +1,5 @@
+![Gabi The Label Logo](https://scontent.fsin9-2.fna.fbcdn.net/v/t1.6435-9/29243623_430084794098366_4375454635234689024_n.jpg "Gabi The Label")
+
 **A brief story about Gabi The Label**
 
 - A real start-up by my sister!
