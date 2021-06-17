@@ -36,8 +36,8 @@
                                                 <input type="hidden" class="form-control cart-price-input" id="price" name="price<%= i %>" value="<%= cart.product[i].price %>">
                                             </td>
                                             <td class="cart-quantity input-group">
-                                                <input class="cart-quantity-input" type="number" id="quantity" name="quantity<%= i %>" value="<%= cart.product[i].quantity %>" style="width: 50px;">
-                                                <button class="btn btn-sm btn-secondary ms-1 remove" type="button">Remove</button>
+                                                <input class="cart-quantity-input" type="number" id="quantity" name="quantity<%= i %>" value="<%= cart.product[i].quantity %>" style="width: 50px; height: 35px;">
+                                                <button class="btn btn-sm btn-secondary ms-1 remove" style="height: 35px;" type="button">Remove</button>
                                             </td>
                                         </tr>
                                     <% } %>
